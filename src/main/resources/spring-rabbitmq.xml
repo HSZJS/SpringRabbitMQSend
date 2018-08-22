@@ -30,7 +30,6 @@
 		<rabbit:bindings>
 			<rabbit:binding key="spring.queue.key2" queue="spring.queue2" />
 		</rabbit:bindings>
-		
 	</rabbit:direct-exchange>
 	
 	<!-- queue 队列声明-->

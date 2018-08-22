@@ -19,15 +19,15 @@ public class TestSendClass {
     @Test  
     public void sendMessage2Queue() throws Exception {
         MessageProducer messageProducer = (MessageProducer) context.getBean("messageProducer");
-        for(int i=0;i<5;i++) {
+        for(int i=0;i<50;i++) {
         	String str = "Hello, message by queue num :" + i;
             messageProducer.sendMessage2Queue(str);
             try {  
                 //暂停一下，好让消息消费者去取消息打印出来  
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();  
-            }  
+            }
             System.out.println("发送成功"+str);
         }  
     }
@@ -35,12 +35,12 @@ public class TestSendClass {
     @Test
     public void sendMessage2Exchange() throws Exception {
         MessageProducer messageProducer = (MessageProducer) context.getBean("messageProducer");
-        for(int i=0;i<5;i++) {
+        for(int i=0;i<50;i++) {
         	String str = "Hello, message by exchange num :" + i;
             messageProducer.sendMessage2Exchange(str);
             try {  
                 //暂停一下，好让消息消费者去取消息打印出来  
-                Thread.sleep(500);  
+                Thread.sleep(100);  
             } catch (InterruptedException e) {
                 e.printStackTrace();  
             }  
