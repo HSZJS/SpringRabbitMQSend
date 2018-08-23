@@ -16,7 +16,7 @@
 	<!-- 连接服务配置  -->
 	<rabbit:connection-factory id="connectionFactory"
 		host="${mq.host}" username="${mq.username}" password="${mq.password}"
-		port="${mq.port}" virtual-host="${mq.virtualhost}" channel-cache-size="5" />
+		port="${mq.port}" virtual-host="${mq.virtualhost}" channel-cache-size="25" />
 
 	<!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
 	<rabbit:admin id="connectAdmin" connection-factory="connectionFactory" />
