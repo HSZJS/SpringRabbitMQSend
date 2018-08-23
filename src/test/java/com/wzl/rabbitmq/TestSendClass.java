@@ -16,7 +16,7 @@ public class TestSendClass {
         context = new ClassPathXmlApplicationContext("spring.xml");
     }
     
-    @Test  
+    @Test
     public void sendMessage2Queue() throws Exception {
         MessageProducer messageProducer = (MessageProducer) context.getBean("messageProducer");
         for(int i=0;i<50;i++) {
@@ -46,6 +46,24 @@ public class TestSendClass {
             }  
             System.out.println("发送成功"+str);
         }  
-    } 
+    }
+    
+    @Test
+    public void sendMessage2QueueAndExchange() throws Exception {
+        MessageProducer messageProducer = (MessageProducer) context.getBean("messageProducer");
+        for(int i=0;i<500;i++) {
+        	String str = "Hello, message by queue num :" + i;
+            messageProducer.sendMessage2Queue(str);
+            String str1 = "Hello, message by exchange num :" + i;
+            messageProducer.sendMessage2Exchange(str1);
+            try {  
+                //暂停一下，好让消息消费者去取消息打印出来
+                Thread.sleep(10);  
+            } catch (InterruptedException e) {
+                e.printStackTrace();  
+            }
+            System.out.println("发送成功!"+ i);
+        }  
+    }
 
 }
